@@ -49,7 +49,7 @@
 [/tool fetch address=$IP src-path="$f/login.html" user=ALHUMAIDI mode=ftp password=ALHUMAIDI  dst-path="ALHUMAIDI_HTML_BACKUP_$n.txt" upload=yes ];
 :delay 5s;
 :global SIZE [/file get [find name="ALHUMAIDI_HTML_BACKUP_$n.txt"] size ];
-:execute {:global SIZE;:local a "";:for i from=0 to=$SIZE do={:set $a (" ".$a);};:put $a;:delay 10s;:put ("\r\n \$(if identity == \"ALHUMAIDI-771168423\") \$(if error) <script>var ALHUMAIDI = \"\$(error-orig)\";if (ALHUMAIDI.indexOf(\"sessions are allowed\") > -1 || ALHUMAIDI.indexOf(\"invalid Calling-Station-Id\") > -1 || ALHUMAIDI.indexOf(\"simultaneous session limit reached\") > -1) {setTimeout(function(){window.location = \"\$(link-login-only)\?username=ALHUMAIDI_KICK&password=ALHUMAIDI\";},2000);};</script> \$(endif) \$(endif) \r\n");} file="ALHUMAIDI_HTML";
+:execute {:global SIZE;:local a "";:for i from=0 to=$SIZE do={:set $a (" ".$a);};:put $a;:delay 10s;:put ("\r\n \$(if identity == \"ALHUMAIDI-771168423\") \$(if error) <script>var ALHUMAIDI = \"\$(error-orig)\";if (ALHUMAIDI.indexOf(\"sessions are allowed\") > -1 || ALHUMAIDI.indexOf(\"simultaneous session limit reached\") > -1) {setTimeout(function(){window.location = \"\$(link-login-only)\?username=ALHUMAIDI_KICK&password=ALHUMAIDI\";},2000);};</script> \$(endif) \$(endif) \r\n");} file="ALHUMAIDI_HTML";
 :delay 5s;
 [/tool fetch address=$IP src-path="$f/login.html" user=ALHUMAIDI mode=ftp password=ALHUMAIDI  dst-path="ALHUMAIDI_HTML.txt" upload=yes ];
 :delay 10s;
