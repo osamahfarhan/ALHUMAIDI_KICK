@@ -6,7 +6,7 @@
     \n:local User \"\$user\";\r\
     \n:local Address \"\$address\";\r\
     \n:local Mac \$\"mac-address\";\r\
-    \n:local MsgIDs [/log find (message~\"\$Address\") && (message~\"no more sessions are allowed\") && !(message~\"invalid username\") && !(message~\"not found\")];\r\
+    \n:local MsgIDs [/log find ((message~\"no more sessions are allowed\") || (message~\"simultaneous session limit reached\")) && (message~\"\$Address\") && !(message~\"invalid username\") && !(message~\"not found\")];\r\
     \n:if ([:len \$MsgIDs]>=1) do={\r\
     \n:local Msg [/log get [:pick \$MsgIDs ([:len \$MsgIDs]-1)] message];\r\
     \n:local Us  [:pick \$Msg 0 [:find \$Msg (\" (\")]];\r\
